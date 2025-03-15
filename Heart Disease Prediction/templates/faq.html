@@ -1,0 +1,133 @@
+{% extends "base.html" %}
+
+{% block title %}Heart Health Predictor - FAQ{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card shadow">
+            <div class="card-header bg-primary text-white">
+                <h2 class="mb-0"><i class="fas fa-question-circle me-2"></i>Frequently Asked Questions</h2>
+            </div>
+            <div class="card-body">
+                <div class="accordion" id="faqAccordion">
+                    <!-- About the Tool -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingOne">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                <i class="fas fa-info-circle me-2"></i>About This Tool
+                            </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                <h5>What is the Heart Disease Prediction Tool?</h5>
+                                <p>This tool uses machine learning to assess your risk of heart disease based on key health parameters. It analyzes the information you provide and compares it to patterns found in medical data to estimate your risk level.</p>
+                                
+                                <h5>How accurate is this prediction?</h5>
+                                <p>Our model has been trained on medical datasets and achieves approximately 85-90% accuracy. However, it's important to understand that this is not a medical diagnosis. Many factors influence heart health that may not be captured by the limited parameters we collect.</p>
+                                
+                                <h5>Should I rely on this tool for medical advice?</h5>
+                                <p>No. This tool is for educational and informational purposes only. Always consult with a qualified healthcare professional for proper diagnosis and treatment. This tool can help you understand potential risk factors, but it cannot replace professional medical evaluation.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Heart Disease Information -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingTwo">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                <i class="fas fa-heartbeat me-2"></i>Heart Disease Information
+                            </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                <h5>What is heart disease?</h5>
+                                <p>Heart disease refers to various conditions that affect the heart's structure and function. The most common type is coronary artery disease, which affects blood flow to the heart and can lead to heart attacks.</p>
+                                
+                                <h5>What are the common symptoms of heart disease?</h5>
+                                <p>Common symptoms include chest pain or discomfort, shortness of breath, pain or numbness in the legs or arms, pain in the neck, jaw, throat, or back, and fatigue. However, some people may not experience symptoms until a heart attack occurs.</p>
+                                
+                                <h5>What are the major risk factors for heart disease?</h5>
+                                <p>Major risk factors include age, sex, family history, smoking, high blood pressure, high cholesterol, diabetes, obesity, physical inactivity, unhealthy diet, excessive alcohol consumption, and stress.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Understanding the Parameters -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingThree">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                <i class="fas fa-clipboard-list me-2"></i>Understanding the Parameters
+                            </button>
+                        </h2>
+                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                <h5>Age</h5>
+                                <p>Heart disease risk increases with age. After 45 for men and 55 for women, the risk significantly increases.</p>
+                                
+                                <h5>Sex</h5>
+                                <p>Men generally have a higher risk of heart disease than women. However, after menopause, women's risk increases and eventually equals that of men.</p>
+                                
+                                <h5>Chest Pain Type (CP)</h5>
+                                <p>
+                                    <strong>Typical Angina (0):</strong> Chest pain caused by reduced blood flow to the heart.<br>
+                                    <strong>Atypical Angina (1):</strong> Chest pain that doesn't follow the pattern of typical angina.<br>
+                                    <strong>Non-anginal Pain (2):</strong> Chest pain not related to the heart.<br>
+                                    <strong>Asymptomatic (3):</strong> No chest pain symptoms.
+                                </p>
+                                
+                                <h5>Resting Blood Pressure (trestbps)</h5>
+                                <p>Normal blood pressure is typically around 120/80 mm Hg. High blood pressure (hypertension) is a major risk factor for heart disease.</p>
+                                
+                                <h5>Maximum Heart Rate (thalach)</h5>
+                                <p>This is the highest heart rate achieved during exercise. A lower maximum heart rate may indicate cardiovascular issues.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Prevention and Management -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingFour">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                <i class="fas fa-shield-alt me-2"></i>Prevention and Management
+                            </button>
+                        </h2>
+                        <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                <h5>How can I reduce my risk of heart disease?</h5>
+                                <ul>
+                                    <li>Maintain a healthy diet rich in fruits, vegetables, whole grains, and lean proteins</li>
+                                    <li>Exercise regularly (at least 150 minutes of moderate activity per week)</li>
+                                    <li>Maintain a healthy weight</li>
+                                    <li>Quit smoking and avoid secondhand smoke</li>
+                                    <li>Limit alcohol consumption</li>
+                                    <li>Manage stress through relaxation techniques</li>
+                                    <li>Control conditions like high blood pressure, high cholesterol, and diabetes</li>
+                                    <li>Get regular check-ups with your healthcare provider</li>
+                                </ul>
+                                
+                                <h5>What dietary approaches are recommended for heart health?</h5>
+                                <p>Heart-healthy diets include the Mediterranean diet and the DASH (Dietary Approaches to Stop Hypertension) diet. These emphasize fruits, vegetables, whole grains, lean proteins, and healthy fats while limiting saturated fats, trans fats, sodium, and added sugars.</p>
+                                
+                                <h5>When should I see a doctor about heart health?</h5>
+                                <p>You should see a doctor if you experience symptoms like chest pain, shortness of breath, or irregular heartbeats. Additionally, regular check-ups are important, especially if you have risk factors for heart disease or a family history of heart problems.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="alert alert-info mt-4">
+                    <i class="fas fa-lightbulb me-2"></i>
+                    <strong>Tip:</strong> Regular check-ups with your healthcare provider are the best way to monitor your heart health and catch potential issues early.
+                </div>
+                
+                <div class="d-grid gap-2 mt-4">
+                    <a href="/" class="btn btn-primary btn-lg">
+                        <i class="fas fa-heart me-2"></i>Check Your Heart Health
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 

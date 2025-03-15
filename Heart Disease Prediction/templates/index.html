@@ -1,0 +1,129 @@
+{% extends "base.html" %}
+
+{% block title %}Heart Health Predictor - Check Your Risk{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card shadow">
+            <div class="card-header bg-primary text-white">
+                <h2 class="mb-0"><i class="fas fa-heartbeat me-2"></i>Heart Disease Risk Assessment</h2>
+            </div>
+            <div class="card-body">
+                <div class="alert alert-info">
+                    <i class="fas fa-info-circle me-2"></i>
+                    <strong>How it works:</strong> Enter your heart health information below, and our AI model will assess your risk of heart disease.
+                </div>
+                
+                <form action="/predict" method="post" id="heart-form" class="needs-validation" novalidate>
+                    <div class="row">
+                        {% for feature in features %}
+                        <div class="col-md-6 mb-3">
+                            <div class="form-group">
+                                <label for="{{ feature }}" class="form-label">
+                                    {{ descriptions[feature] }}
+                                    {% if feature == 'cp' %}
+                                    <i class="fas fa-info-circle text-primary" 
+                                       data-bs-toggle="tooltip" 
+                                       title="0 = Typical Angina, 1 = Atypical Angina, 2 = Non-anginal Pain, 3 = Asymptomatic"></i>
+                                    {% endif %}
+                                </label>
+                                
+                                {% if feature == 'sex' %}
+                                <select class="form-select" id="{{ feature }}" name="{{ feature }}" required>
+                                    <option value="" disabled selected>Select your gender</option>
+                                    <option value="1">Male</option>
+                                    <option value="0">Female</option>
+                                </select>
+                                {% elif feature == 'cp' %}
+                                <select class="form-select" id="{{ feature }}" name="{{ feature }}" required>
+                                    <option value="" disabled selected>Select chest pain type</option>
+                                    <option value="0">Typical Angina</option>
+                                    <option value="1">Atypical Angina</option>
+                                    <option value="2">Non-anginal Pain</option>
+                                    <option value="3">Asymptomatic</option>
+                                </select>
+                                {% else %}
+                                <input type="number" 
+                                       class="form-control" 
+                                       id="{{ feature }}" 
+                                       name="{{ feature }}" 
+                                       required
+                                       {% if feature == 'age' %}
+                                       min="18" max="100" placeholder="Enter your age"
+                                       {% elif feature == 'trestbps' %}
+                                       min="80" max="240" placeholder="Enter resting blood pressure"
+                                       {% elif feature == 'thalach' %}
+                                       min="60" max="220" placeholder="Enter maximum heart rate"
+                                       {% endif %}
+                                >
+                                {% endif %}
+                                
+                                {% if feature == 'trestbps' %}
+                                <small class="form-text text-muted">Normal range: 90-120 mm Hg</small>
+                                {% elif feature == 'thalach' %}
+                                <small class="form-text text-muted">Normal range: 60-100 bpm at rest</small>
+                                {% endif %}
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    
+                    <div class="d-grid gap-2 mt-4">
+                        <button type="submit" class="btn btn-primary btn-lg">
+                            <i class="fas fa-heartbeat me-2"></i>Check My Heart Health
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+        <div class="card mt-4 shadow">
+            <div class="card-header bg-info text-white">
+                <h3 class="mb-0"><i class="fas fa-question-circle me-2"></i>What is this tool?</h3>
+            </div>
+            <div class="card-body">
+                <p>This Heart Disease Prediction tool uses machine learning to assess your risk of heart disease based on key health parameters. The model has been trained on medical data and can provide an initial risk assessment.</p>
+                
+                <div class="alert alert-warning">
+                    <i class="fas fa-exclamation-triangle me-2"></i>
+                    <strong>Important:</strong> This tool is for educational purposes only and does not replace professional medical advice. Always consult with a healthcare provider for proper diagnosis and treatment.
+                </div>
+                
+                <h5><i class="fas fa-clipboard-list me-2 text-primary"></i>The 5 Key Parameters We Use:</h5>
+                <ul class="list-group list-group-flush mb-3">
+                    <li class="list-group-item"><strong>Age:</strong> Heart disease risk increases with age</li>
+                    <li class="list-group-item"><strong>Sex:</strong> Men are generally at higher risk than women</li>
+                    <li class="list-group-item"><strong>Chest Pain Type:</strong> The type of chest pain experienced is a significant indicator</li>
+                    <li class="list-group-item"><strong>Resting Blood Pressure:</strong> Higher blood pressure increases risk</li>
+                    <li class="list-group-item"><strong>Maximum Heart Rate:</strong> Lower maximum heart rate may indicate higher risk</li>
+                </ul>
+                
+                <p>For more information, visit our <a href="/faq">FAQ page</a>.</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Initialize tooltips
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl)
+        });
+        
+        // Form validation
+        const form = document.getElementById('heart-form');
+        form.addEventListener('submit', function(event) {
+            if (!form.checkValidity()) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+            form.classList.add('was-validated');
+        }, false);
+    });
+</script>
+{% endblock %} 
